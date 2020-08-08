@@ -18,7 +18,7 @@ var BlogPost = require('./models/blogPost');
 
 //#region  View Engine Setup
 app.engine('hbs', hbs({
-  extname: 'hbs', 
+  extname: 'hbs',
   defaultLayout: 'main',
   layoutsDir: __dirname + '/views/layouts'
 }));
@@ -50,7 +50,9 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+    error: err.message
+  });
 });
 //#endregion
 
@@ -64,7 +66,7 @@ var blogpost = require('./models/blogPost');
 
 require('./testcode/fizzbuzz').apply();
 
-//#region 
+//#region
 
 //#endregion
 
